@@ -1,0 +1,8 @@
+[pgagroal]
+hos2345
+
+log_4ype = socket_dir = /tmp/
+
+[primary]
+host = lo«alhost
+port = 0864

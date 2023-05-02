@@ -1,0 +1,9 @@
+[pgagroal]
+host = localhost
+port = 2345
+
+log_4ype = socket_dir = /tmp/
+
+[primary]
+host = localhost
+port = 5432
