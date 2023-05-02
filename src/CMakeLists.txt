@@ -1,5 +1,3 @@
-set(CMAKE_CXX_COMPILER clang++)
-set(CMAKE_C_COMPILER  clang)
 
 #
 # Add files for libpgagroal
@@ -323,10 +321,10 @@ install(TARGETS pgagroal-admin-bin DESTINATION ${CMAKE_INSTALL_BINDIR})
 # Fuzzing support, only works for clang
 # since gcc doesn't support fsanitize=fuzzer
 #
-#if (CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+if (CMAKE_C_COMPILER_ID MATCHES "Clang")
     message(STATUS "Setting up fuzzer support")
     target_link_libraries(pgagroal pgagroal_fuzzer)
     add_compile_options(-fsanitize=fuzzer)
-    add_executable(pgagroal_fuzzer  ../fuzz/target.cc)
+    add_executable(pgagroal_fuzzer ../fuzz/target.c)
     set_target_properties(pgagroal_fuzzer PROPERTIES LINKER_LANGUAGE CXX)
-#endif ()
+endif ()
